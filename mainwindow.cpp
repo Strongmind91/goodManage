@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QVariant>
 #include <QtSql>
+#include "stdio.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -45,13 +46,20 @@ void MainWindow::on_tabCongCu_themHang_clicked()
 
    name = this->ui->tabCongCu_tenhang->text();
 
-   if(query.exec("INSERT INTO tableName (tenHang)" "VALUES ('Chen')"))
+   if (!name.length())
+   {
+        qDebug() << __FUNCTION__ <<" Insert error with invalid of Length ";
+   }
+   query.prepare("INSERT INTO tableName (tenHang) VALUES(?)");
+   query.bindValue(0, name);
+   if(query.exec())
    {
        success = true;
+       ui->tabCongCu_tenhang->setText("");
    }
    else
    {
-        qDebug() << "addPerson error:  "
+        qDebug() << __FUNCTION__ <<"add Hang is error: "
                  << query.lastError();
    }
 }
