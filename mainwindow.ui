@@ -27,7 +27,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabNhapHang">
      <attribute name="title">
@@ -667,7 +667,7 @@
         <string>Tên</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="tabCongCu_tenhang">
+      <widget class="QLineEdit" name="tabCongCu_tenHang_ten">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -677,7 +677,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="tabCongCu_themHang">
+      <widget class="QPushButton" name="tabCongCu_themHang_buttonThem">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -716,7 +716,7 @@
         <string>Tên</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_9">
+      <widget class="QLineEdit" name="tabCongCu_nguonNhap_ten">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -726,7 +726,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_6">
+      <widget class="QPushButton" name="tabCongCu_nguonNhap_buttonThem">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -739,7 +739,7 @@
         <string>Thêm</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_13">
+      <widget class="QLineEdit" name="tabCongCu_nguonNhap_phoneNumber">
        <property name="geometry">
         <rect>
          <x>200</x>
@@ -775,7 +775,7 @@
         <string>Ghi chú</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_14">
+      <widget class="QLineEdit" name="tabCongCu_nguonNhap_note">
        <property name="geometry">
         <rect>
          <x>410</x>
@@ -811,7 +811,7 @@
         <string>Tên</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_10">
+      <widget class="QLineEdit" name="tabCongCu_khachMua_ten">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -821,7 +821,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_7">
+      <widget class="QPushButton" name="tabCongCu_khachMua_buttonThem">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -834,7 +834,7 @@
         <string>Thêm</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_15">
+      <widget class="QLineEdit" name="tabCongCu_khachMua_note">
        <property name="geometry">
         <rect>
          <x>410</x>
@@ -857,7 +857,7 @@
         <string>SĐT</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_16">
+      <widget class="QLineEdit" name="tabCongCu_khachMua_phoneNumber">
        <property name="geometry">
         <rect>
          <x>200</x>
@@ -906,7 +906,7 @@
         <string>Tên</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_11">
+      <widget class="QLineEdit" name="tabCongCu_donVi_ten">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -916,7 +916,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_8">
+      <widget class="QPushButton" name="tabCongCu_donVi_buttonThem">
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -968,6 +968,50 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>tabCongCu_tenHang_ten</tabstop>
+  <tabstop>tabCongCu_themHang_buttonThem</tabstop>
+  <tabstop>tabCongCu_donVi_ten</tabstop>
+  <tabstop>tabCongCu_donVi_buttonThem</tabstop>
+  <tabstop>tabCongCu_nguonNhap_ten</tabstop>
+  <tabstop>tabCongCu_nguonNhap_phoneNumber</tabstop>
+  <tabstop>tabCongCu_nguonNhap_note</tabstop>
+  <tabstop>tabCongCu_nguonNhap_buttonThem</tabstop>
+  <tabstop>tabCongCu_khachMua_ten</tabstop>
+  <tabstop>tabCongCu_khachMua_phoneNumber</tabstop>
+  <tabstop>tabCongCu_khachMua_note</tabstop>
+  <tabstop>tabCongCu_khachMua_buttonThem</tabstop>
+  <tabstop>lineEdit_5</tabstop>
+  <tabstop>comboBox_4</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>comboBox_6</tabstop>
+  <tabstop>lineEdit_6</tabstop>
+  <tabstop>lineEdit_8</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>comboBox_8</tabstop>
+  <tabstop>comboBox_9</tabstop>
+  <tabstop>pushButton_11</tabstop>
+  <tabstop>lineEdit_17</tabstop>
+  <tabstop>pushButton_12</tabstop>
+  <tabstop>pushButton_9</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>lineEdit_12</tabstop>
+  <tabstop>textBrowser</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>comboBox_5</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>comboBox_3</tabstop>
+  <tabstop>comboBox_7</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>pushButton_10</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>tableView</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>lineEdit_3</tabstop>
+  <tabstop>textBrowser_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
