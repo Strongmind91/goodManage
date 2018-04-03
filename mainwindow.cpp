@@ -7,6 +7,12 @@
 #include "stdio.h"
 #include <QMessageBox>
 
+
+#define TAB_NHAP_HANG        0
+#define COL_TEN_HANG         1
+#define COL_TEN_DONVI        1
+#define COL_TEN_NGUON_NHAP   1
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -31,6 +37,14 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << "connection to database ok";
     }
 
+    /* initialize value of variables */
+    tabNhapHang_currentIdx_tenHang  = 0;
+    currentIdx_tenDonvi = 0;
+    currentIdx_tenNguonNhap = 0;
+    currentIdx_tenKhachHang = 0;
+
+    /*First init value for tab Nhap Hang*/
+    this->on_tabWidget_currentChanged(TAB_NHAP_HANG);
 }
 
 MainWindow::~MainWindow()
@@ -223,21 +237,102 @@ void MainWindow::on_tabCongCu_khachMua_buttonThem_clicked()
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
      QSqlQuery query;
-     /* enter tab Nhập Hàng */
-     if (index == 0)
-     {
-         /* check the current idx of Ten Hang trong kho */
-       query.prepare( "select count(1) from tenHang" );
-       if( !query.exec() )
-         qDebug() << "errro"<<query.lastError();
-       else
-       {
-         qDebug()<< "Selected!";
-         query.seek(0);
-         qDebug()<< "value"<<query.value(0).toInt();
-       }
-         /* check the current idx of Don Vi */
+     QSqlRecord rec;
+     int idx_temp;
+     int idx_current;
 
-         /* check the current idx of Nguon Nhap */
+     /* enter tab Nhập Hàng */
+     if (index == TAB_NHAP_HANG)
+     {
+
+       /* check the current idx of Ten Hang trong kho */
+       query.prepare( "select count(*) from tenHang" );
+       if(!query.exec())
+       {
+         qDebug() << "can not check number of elements in tenHang table"<<query.lastError();
+         return;
+       }
+       query.seek(0);
+       idx_temp = query.value(0).toInt();
+       idx_current = ui->tabNhapHang_cb_tenHang->count();
+       if (idx_current < idx_temp)
+       {
+           /*start to get and add ten hang to the current list */
+           query.prepare( "select id, tenHang from tenHang");
+           if( !query.exec() )
+           {
+               qDebug() << "errro"<<query.lastError();
+               return;
+           }
+           else
+           {
+               do
+               {
+                   query.seek(idx_current);
+                   ui->tabNhapHang_cb_tenHang->addItem(query.value(COL_TEN_HANG).toString());
+                   idx_current++;
+               }while(idx_current <idx_temp);
+           }
+       }
+
+       /* check the current idx of Don Vi */
+       query.prepare( "select count(*) from tenDonVi" );
+       if(!query.exec())
+       {
+         qDebug() << "can not check number of elements in tenDonVi table"<<query.lastError();
+         return;
+       }
+       query.seek(0);
+       idx_temp = query.value(0).toInt();
+       idx_current = ui->tabNhapHang_cb_tenDonVi->count();
+       if (idx_current < idx_temp)
+       {
+           /*start to get and add ten hang to the current list */
+           query.prepare( "select id, tenDonVi from tenDonVi");
+           if( !query.exec() )
+           {
+               qDebug() << "errro"<<query.lastError();
+               return;
+           }
+           else
+           {
+               do
+               {
+                   query.seek(idx_current);
+                   ui->tabNhapHang_cb_tenDonVi->addItem(query.value(COL_TEN_DONVI).toString());
+                   idx_current++;
+               }while(idx_current <idx_temp);
+           }
+       }
+
+       /* check the current idx of Nguon Nhap */
+       query.prepare( "select count(*) from nguonNhap" );
+       if(!query.exec())
+       {
+         qDebug() << "can not check number of elements in nguonNhap table"<<query.lastError();
+         return;
+       }
+       query.seek(0);
+       idx_temp = query.value(0).toInt();
+       idx_current = ui->tabNhapHang_cb_tenNguonNhap->count();
+       if (idx_current < idx_temp)
+       {
+           /*start to get and add ten hang to the current list */
+           query.prepare( "select id, tenNguonNhap from nguonNhap");
+           if( !query.exec() )
+           {
+               qDebug() << "errro"<<query.lastError();
+               return;
+           }
+           else
+           {
+               do
+               {
+                   query.seek(idx_current);
+                   ui->tabNhapHang_cb_tenNguonNhap->addItem(query.value(COL_TEN_NGUON_NHAP).toString());
+                   idx_current++;
+               }while(idx_current <idx_temp);
+           }
+       }
      }
 }

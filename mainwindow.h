@@ -15,7 +15,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     QSqlDatabase mydb;
-    int currentIdx_tenHang;
+    int tabNhapHang_currentIdx_tenHang;
     int currentIdx_tenDonvi;
     int currentIdx_tenNguonNhap;
     int currentIdx_tenKhachHang;
