@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtSql>
+
 namespace Ui {
 class MainWindow;
 }
@@ -15,10 +16,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     QSqlDatabase mydb;
-    int tabNhapHang_currentIdx_tenHang;
-    int currentIdx_tenDonvi;
-    int currentIdx_tenNguonNhap;
-    int currentIdx_tenKhachHang;
+    QSqlTableModel *modelTable;
+    QSqlRecord record;
+    int currentRow_tabXuatHang_tableView;
 
 private slots:
 
@@ -30,7 +30,13 @@ private slots:
 
     void on_tabCongCu_khachMua_buttonThem_clicked();
 
-    void on_tabWidget_currentChanged(int index);
+    void updateComboBox(int);
+
+    void on_tabNhapHang_btn_nhapVaoKho_clicked();
+
+    void on_tabXuatHang_btn_AddToTableView_clicked();
+
+    void on_tabXuatHang_btn_LuuVao_clicked();
 
 private:
     Ui::MainWindow *ui;

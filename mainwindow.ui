@@ -27,7 +27,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabNhapHang">
      <attribute name="title">
@@ -69,7 +69,7 @@
        <string>Số lượng</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="tabNhapHang_inputSoLuong">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -79,7 +79,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="tabNhapHang_inputGiaNhap">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -102,7 +102,7 @@
        <string>Giá nhập</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="tabNhapHang_inputGhiChu">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -164,7 +164,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_3">
+     <widget class="QComboBox" name="tabNhapHang_cb_nguoiNhap">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -207,7 +207,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="tabNhapHang_btn_nhapVaoKho">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -218,19 +218,6 @@
       </property>
       <property name="text">
        <string>Nhập vào kho</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_10">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>240</y>
-        <width>91</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Xóa thông tin</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_20">
@@ -251,17 +238,7 @@
      <attribute name="title">
       <string>Xuất hàng</string>
      </attribute>
-     <widget class="QTableView" name="tableView">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>200</y>
-        <width>781</width>
-        <height>221</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="tabXuatHang_btn_AddToTableView">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -287,7 +264,7 @@
        <string>Số lượng</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="tabXuatHang_inputGiaXuat">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -323,7 +300,7 @@
        <string>Tên hàng hóa</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_5">
+     <widget class="QComboBox" name="tabXuatHang_cb_tenHang">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -333,7 +310,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_5">
+     <widget class="QLineEdit" name="tabXuatHang_inputSoLuong">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -343,7 +320,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_4">
+     <widget class="QComboBox" name="tabXuatHang_cb_tenKhachHang">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -366,7 +343,7 @@
        <string>Khách hàng</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="tabXuatHang_btn_LuuVao">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -379,12 +356,32 @@
        <string>Lưu vào </string>
       </property>
      </widget>
+     <widget class="QTextBrowser" name="tabXuatHang_TextBrowser">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>200</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tabXuatHang_tableView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>250</y>
+        <width>781</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabHuHong">
      <attribute name="title">
       <string>Hư Hỏng</string>
      </attribute>
-     <widget class="QComboBox" name="comboBox_6">
+     <widget class="QComboBox" name="tabHuHong_cb_tenHang">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -484,7 +481,7 @@
        <string>Tên khách hàng</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_8">
+     <widget class="QComboBox" name="tabThuTien_cb_tenKhachHang">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -961,14 +958,14 @@ p, li { white-space: pre-wrap; }
   <tabstop>tabCongCu_khachMua_phoneNumber</tabstop>
   <tabstop>tabCongCu_khachMua_note</tabstop>
   <tabstop>tabCongCu_khachMua_buttonThem</tabstop>
-  <tabstop>lineEdit_5</tabstop>
-  <tabstop>comboBox_4</tabstop>
-  <tabstop>pushButton_5</tabstop>
-  <tabstop>comboBox_6</tabstop>
+  <tabstop>tabXuatHang_inputSoLuong</tabstop>
+  <tabstop>tabXuatHang_cb_tenKhachHang</tabstop>
+  <tabstop>tabXuatHang_btn_LuuVao</tabstop>
+  <tabstop>tabHuHong_cb_tenHang</tabstop>
   <tabstop>lineEdit_6</tabstop>
   <tabstop>lineEdit_8</tabstop>
   <tabstop>pushButton_2</tabstop>
-  <tabstop>comboBox_8</tabstop>
+  <tabstop>tabThuTien_cb_tenKhachHang</tabstop>
   <tabstop>comboBox_9</tabstop>
   <tabstop>pushButton_11</tabstop>
   <tabstop>lineEdit_17</tabstop>
@@ -977,19 +974,17 @@ p, li { white-space: pre-wrap; }
   <tabstop>tabWidget</tabstop>
   <tabstop>lineEdit_12</tabstop>
   <tabstop>textBrowser</tabstop>
-  <tabstop>lineEdit_4</tabstop>
-  <tabstop>comboBox_5</tabstop>
+  <tabstop>tabXuatHang_inputGiaXuat</tabstop>
+  <tabstop>tabXuatHang_cb_tenHang</tabstop>
   <tabstop>tabNhapHang_cb_tenDonVi</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>comboBox_3</tabstop>
+  <tabstop>tabNhapHang_btn_nhapVaoKho</tabstop>
+  <tabstop>tabNhapHang_cb_nguoiNhap</tabstop>
   <tabstop>tabNhapHang_cb_tenNguonNhap</tabstop>
   <tabstop>tabNhapHang_cb_tenHang</tabstop>
-  <tabstop>pushButton_10</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>pushButton_3</tabstop>
-  <tabstop>tableView</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>lineEdit_3</tabstop>
+  <tabstop>tabNhapHang_inputSoLuong</tabstop>
+  <tabstop>tabXuatHang_btn_AddToTableView</tabstop>
+  <tabstop>tabNhapHang_inputGiaNhap</tabstop>
+  <tabstop>tabNhapHang_inputGhiChu</tabstop>
   <tabstop>textBrowser_2</tabstop>
  </tabstops>
  <resources/>
