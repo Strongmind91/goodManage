@@ -17,8 +17,23 @@ public:
     ~MainWindow();
     QSqlDatabase mydb;
     QSqlTableModel *modelTable;
+    QSqlTableModel *modelTableTabThongKe_TimHang;
+    QSqlTableModel *modelTableTabThongKe_DoanhSo;
+    QSqlTableModel *modelTableTabThongKe_CongNo;
+    QSqlTableModel *modelTableTabThongKe_CongNo_LichSuThu;
+    QSqlTableModel *modelTableTabThongKe_CongNo_LichSuBanHang;
+    QSqlTableModel *modelTableTabThongKe_HuHong;
     QSqlRecord record;
+    QSqlRecord recordThongKe_TimHang;
+    QSqlRecord recordThongKe_DoanhSo;
+    QSqlRecord recordThongKe_CongNo;
+    QSqlRecord recordThongKe_CongNo_LichSuThu;
+    QSqlRecord recordThongKe_CongNo_LichSuBanHang;
+    QSqlRecord recordThongKe_HuHong;
     int currentRow_tabXuatHang_tableView;
+    QString currentKhachHang;
+    int dateInteractive;
+    int thongKeType;
 
 private slots:
 
@@ -37,6 +52,41 @@ private slots:
     void on_tabXuatHang_btn_AddToTableView_clicked();
 
     void on_tabXuatHang_btn_LuuVao_clicked();
+
+    void on_tabXuatHang_btn_DelToTableView_clicked();
+
+    void on_tabHuHong_btn_nhapVao_clicked();
+
+    void on_tabThuTien_btn_nhapVao_clicked();
+
+    void on_tabThongKe_btn_timTrongKho_clicked();
+
+
+    void on_tabThongKe_tabWidget_currentChanged(int index);
+
+
+    void on_calendarWidget_clicked(const QDate &date);
+
+    void on_tabThongKe_DoanhSo_btn_TuNgay_clicked();
+
+    void on_tabThongKe_DoanhSo_btn_DenNgay_clicked();
+
+    void on_radioButton_KhoangThoiGian_clicked();
+
+    void on_radioButton_khachHang_clicked();
+
+    void on_radioButton_TenHang_clicked();
+
+
+    void on_tabThongKe_btn_ThongKe_clicked();
+
+    void on_tabThongKe_CongNo_btn_timKiem_clicked();
+
+    void on_tabThongKe_CongNo_btn_LichSuThu_clicked();
+
+    void on_tabThongKe_CongNo_btn_LichSuBanHang_clicked();
+
+    void on_tabThongKe_HuHong_clicked();
 
 private:
     Ui::MainWindow *ui;

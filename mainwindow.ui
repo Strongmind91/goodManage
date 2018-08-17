@@ -13,12 +13,17 @@
   <property name="windowTitle">
    <string>Quản lý là chìa khóa của sự thành công</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normalon>:/icon/icon.png</normalon>
+   </iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>791</width>
       <height>501</height>
      </rect>
@@ -27,7 +32,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tabNhapHang">
      <attribute name="title">
@@ -241,8 +246,8 @@
      <widget class="QPushButton" name="tabXuatHang_btn_AddToTableView">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>90</y>
+        <x>300</x>
+        <y>140</y>
         <width>111</width>
         <height>51</height>
        </rect>
@@ -356,16 +361,6 @@
        <string>Lưu vào </string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="tabXuatHang_TextBrowser">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>200</y>
-        <width>151</width>
-        <height>41</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QTableView" name="tabXuatHang_tableView">
       <property name="geometry">
        <rect>
@@ -375,6 +370,52 @@
         <height>171</height>
        </rect>
       </property>
+     </widget>
+     <widget class="QPushButton" name="tabXuatHang_btn_DelToTableView">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>140</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Xóa khỏi danh mục</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>40</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Người Xuất</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="tabXuatHang_cb_nguoiXuat">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>40</y>
+        <width>111</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Thị Ánh</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nguyễn Cường</string>
+       </property>
+      </item>
      </widget>
     </widget>
     <widget class="QWidget" name="tabHuHong">
@@ -391,7 +432,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="tabHuHong_soLuong">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -440,7 +481,7 @@
        <string>Giá tiền</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_8">
+     <widget class="QLineEdit" name="tabHuHong_giaTien">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -450,7 +491,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="tabHuHong_btn_nhapVao">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -461,6 +502,19 @@
       </property>
       <property name="text">
        <string>Nhập vào</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>160</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>(tại thời điểm hư hỏng)</string>
       </property>
      </widget>
     </widget>
@@ -504,7 +558,7 @@
        <string>Người thu</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_9">
+     <widget class="QComboBox" name="tabThuTien_cbb_nguoiNhap">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -513,8 +567,18 @@
         <height>22</height>
        </rect>
       </property>
+      <item>
+       <property name="text">
+        <string>Thị Ánh</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nguyễn Cường</string>
+       </property>
+      </item>
      </widget>
-     <widget class="QPushButton" name="pushButton_11">
+     <widget class="QPushButton" name="tabThuTien_btn_nhapVao">
       <property name="geometry">
        <rect>
         <x>440</x>
@@ -540,7 +604,7 @@
        <string>Số tiền thu</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_17">
+     <widget class="QLineEdit" name="tabThuTien_tbx_tienThu">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -550,67 +614,537 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_12">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>100</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Xóa dữ liệu</string>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="tabThongKe">
      <attribute name="title">
       <string>Thống kê</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_9">
+     <widget class="QTabWidget" name="tabThongKe_tabWidget">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>60</y>
-        <width>75</width>
-        <height>23</height>
+        <x>-10</x>
+        <y>20</y>
+        <width>781</width>
+        <height>221</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Tìm hàng</string>
+      <property name="currentIndex">
+       <number>3</number>
       </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Tìm hàng</string>
+       </attribute>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>50</y>
+          <width>47</width>
+          <height>13</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên hàng</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="tabThongKe_cb_tenHang">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>40</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tabThongKe_btn_timTrongKho">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>100</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tìm trong kho</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Doanh số</string>
+       </attribute>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tìm kiếm theo</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_KhoangThoiGian">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>70</y>
+          <width>111</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Khoảng thời gian</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_khachHang">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Khách Hàng</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_TenHang">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>130</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên Hàng</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tabThongKe_btn_ThongKe">
+        <property name="geometry">
+         <rect>
+          <x>560</x>
+          <y>112</y>
+          <width>75</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Thống kê</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_TuNgay">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>70</y>
+          <width>47</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Từ ngày:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_DenNgay">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>70</y>
+          <width>47</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Đến ngày:</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="tabThongKe_DoanhSo_btn_TuNgay">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>70</y>
+          <width>25</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="tabThongKe_DoanhSo_btn_DenNgay">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>70</y>
+          <width>25</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="tabThongKe_DoanhSo_LEdit_TuNgay">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>70</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="tabThongKe_DoanhSo_LEdit_DenNgay">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>70</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_TenHang">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>70</y>
+          <width>60</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên Hàng: </string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="tabThongKe_DoanhSo_cbb_tenHang">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>70</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_TenKhachHang">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>70</y>
+          <width>81</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên Khách Hàng: </string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="tabThongKe_DoanhSo_cbb_tenKhachHang">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>70</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCalendarWidget" name="calendarWidget">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>10</y>
+          <width>264</width>
+          <height>183</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Công nợ</string>
+       </attribute>
+       <widget class="QComboBox" name="tabThongKe_CongNo_cb_tenKhachHang">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>50</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tabThongKe_CongNo_btn_timKiem">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>110</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tìm Kiếm</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>50</y>
+          <width>91</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên Khách Hàng</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tabThongKe_CongNo_btn_LichSuThu">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>110</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Lịch sử thu</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tabThongKe_CongNo_btn_LichSuBanHang">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>110</y>
+          <width>101</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Lịch sử bán hàng</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Hư hỏng</string>
+       </attribute>
+       <widget class="QPushButton" name="tabThongKe_HuHong">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>120</y>
+          <width>121</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tìm kiếm</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_KhoangThoiGian_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>70</y>
+          <width>111</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Khoảng thời gian</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_32">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tìm kiếm theo</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_TenHang_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên Hàng</string>
+        </property>
+       </widget>
+       <widget class="QCalendarWidget" name="calendarWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>10</y>
+          <width>264</width>
+          <height>183</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="tabThongKe_DoanhSo_LEdit_TuNgay_2">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>50</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_TenHang_2">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>50</y>
+          <width>60</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên Hàng: </string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="tabThongKe_DoanhSo_btn_DenNgay_2">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>50</y>
+          <width>25</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="tabThongKe_DoanhSo_btn_TuNgay_2">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>50</y>
+          <width>25</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_TenKhachHang_2">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>50</y>
+          <width>81</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tên Khách Hàng: </string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="tabThongKe_DoanhSo_cbb_tenHang_2">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>50</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="tabThongKe_DoanhSo_cbb_tenKhachHang_2">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>50</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="tabThongKe_DoanhSo_LEdit_DenNgay_2">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>50</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_DenNgay_2">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>50</y>
+          <width>47</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Đến ngày:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tabThongKe_DoanhSo_lbl_TuNgay_2">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>50</y>
+          <width>47</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Từ ngày:</string>
+        </property>
+       </widget>
+       <zorder>tabThongKe_HuHong</zorder>
+       <zorder>radioButton_KhoangThoiGian_2</zorder>
+       <zorder>label_32</zorder>
+       <zorder>radioButton_TenHang_2</zorder>
+       <zorder>tabThongKe_DoanhSo_LEdit_TuNgay_2</zorder>
+       <zorder>tabThongKe_DoanhSo_lbl_TenHang_2</zorder>
+       <zorder>tabThongKe_DoanhSo_btn_DenNgay_2</zorder>
+       <zorder>tabThongKe_DoanhSo_btn_TuNgay_2</zorder>
+       <zorder>tabThongKe_DoanhSo_lbl_TenKhachHang_2</zorder>
+       <zorder>tabThongKe_DoanhSo_cbb_tenHang_2</zorder>
+       <zorder>tabThongKe_DoanhSo_cbb_tenKhachHang_2</zorder>
+       <zorder>tabThongKe_DoanhSo_LEdit_DenNgay_2</zorder>
+       <zorder>tabThongKe_DoanhSo_lbl_DenNgay_2</zorder>
+       <zorder>tabThongKe_DoanhSo_lbl_TuNgay_2</zorder>
+       <zorder>calendarWidget_2</zorder>
+      </widget>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_12">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>60</y>
-        <width>113</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_19">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>60</y>
-        <width>91</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Tên hàng hóa</string>
-      </property>
-     </widget>
-     <widget class="QTextBrowser" name="textBrowser">
+     <widget class="QTableView" name="tabThongKe_tableView">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>210</y>
-        <width>781</width>
-        <height>241</height>
+        <y>230</y>
+        <width>771</width>
+        <height>251</height>
        </rect>
       </property>
      </widget>
@@ -943,6 +1477,16 @@ p, li { white-space: pre-wrap; }
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionsetIcon">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/icon.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>setIcon</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
@@ -962,18 +1506,14 @@ p, li { white-space: pre-wrap; }
   <tabstop>tabXuatHang_cb_tenKhachHang</tabstop>
   <tabstop>tabXuatHang_btn_LuuVao</tabstop>
   <tabstop>tabHuHong_cb_tenHang</tabstop>
-  <tabstop>lineEdit_6</tabstop>
-  <tabstop>lineEdit_8</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>tabHuHong_soLuong</tabstop>
+  <tabstop>tabHuHong_giaTien</tabstop>
+  <tabstop>tabHuHong_btn_nhapVao</tabstop>
   <tabstop>tabThuTien_cb_tenKhachHang</tabstop>
-  <tabstop>comboBox_9</tabstop>
-  <tabstop>pushButton_11</tabstop>
-  <tabstop>lineEdit_17</tabstop>
-  <tabstop>pushButton_12</tabstop>
-  <tabstop>pushButton_9</tabstop>
+  <tabstop>tabThuTien_cbb_nguoiNhap</tabstop>
+  <tabstop>tabThuTien_btn_nhapVao</tabstop>
+  <tabstop>tabThuTien_tbx_tienThu</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>lineEdit_12</tabstop>
-  <tabstop>textBrowser</tabstop>
   <tabstop>tabXuatHang_inputGiaXuat</tabstop>
   <tabstop>tabXuatHang_cb_tenHang</tabstop>
   <tabstop>tabNhapHang_cb_tenDonVi</tabstop>
