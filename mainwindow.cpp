@@ -1587,189 +1587,189 @@ void MainWindow::on_tabThongKe_HuHong_clicked()
     int id;
     int ngayNhap;
 
-    /* Try to remove all current values of model */
-    int tmpCount = modelTableTabThongKe_HuHong->rowCount();
-    for(int idx =0 ; idx < tmpCount; idx++)
-    {
-        modelTableTabThongKe_HuHong->removeRow(0);
-    }
+//    /* Try to remove all current values of model */
+//    int tmpCount = modelTableTabThongKe_HuHong->rowCount();
+//    for(int idx =0 ; idx < tmpCount; idx++)
+//    {
+//        modelTableTabThongKe_HuHong->removeRow(0);
+//    }
 
-    switch (thongKeType)
-    {
-    case THONG_KE_KHOANG_THOIGIAN:
-        fromDateStr = ui->tabThongKe_DoanhSo_LEdit_TuNgay->text();
-        toDateStr   = ui->tabThongKe_DoanhSo_LEdit_DenNgay->text();
+//    switch (thongKeType)
+//    {
+//    case THONG_KE_KHOANG_THOIGIAN:
+//        fromDateStr = ui->tabThongKe_DoanhSo_LEdit_TuNgay->text();
+//        toDateStr   = ui->tabThongKe_DoanhSo_LEdit_DenNgay->text();
 
-        fromDate = QDateTime::fromString(fromDateStr + "00:00:00", "dd/MM/yyyyhh:mm:ss");
-        toDate   = QDateTime::fromString(toDateStr +"23:59:59", "dd/MM/yyyyhh:mm:ss");
+//        fromDate = QDateTime::fromString(fromDateStr + "00:00:00", "dd/MM/yyyyhh:mm:ss");
+//        toDate   = QDateTime::fromString(toDateStr +"23:59:59", "dd/MM/yyyyhh:mm:ss");
 
-        fromDateInt = fromDate.toSecsSinceEpoch();
-        toDateInt   = toDate.toSecsSinceEpoch();
+//        fromDateInt = fromDate.toSecsSinceEpoch();
+//        toDateInt   = toDate.toSecsSinceEpoch();
 
-        tempStr = "select id, tenHang, soLuong, giaXuat, thoiGian from huHong where thoiGian >= '" + QString::number(fromDateInt) +"' and thoiGian <= '" + QString::number(toDateInt) + "'";
-        query.prepare( tempStr);
+//        tempStr = "select id, tenHang, soLuong, giaXuat, thoiGian from huHong where thoiGian >= '" + QString::number(fromDateInt) +"' and thoiGian <= '" + QString::number(toDateInt) + "'";
+//        query.prepare( tempStr);
 
-        if(!query.exec())
-        {
-            qDebug() << query.lastError();
-            return;
-        }
+//        if(!query.exec())
+//        {
+//            qDebug() << query.lastError();
+//            return;
+//        }
 
-        if (query.first())
-        {
-            do
-            {
-                id = query.value(0).toInt();
-                tenHang = query.value(1).toString();
-                soLuong  = query.value(2).toInt();
-                giaXuat  = query.value(3).toInt();
-                thoiGian = query.value(4).toInt();
-                thoiGianStr = QDateTime::fromSecsSinceEpoch(thoiGian).toString("hh:mm:ss \n dd/MM/yyyy");
+//        if (query.first())
+//        {
+//            do
+//            {
+//                id = query.value(0).toInt();
+//                tenHang = query.value(1).toString();
+//                soLuong  = query.value(2).toInt();
+//                giaXuat  = query.value(3).toInt();
+//                thoiGian = query.value(4).toInt();
+//                thoiGianStr = QDateTime::fromSecsSinceEpoch(thoiGian).toString("hh:mm:ss \n dd/MM/yyyy");
 
-                recordThongKe_DoanhSo.setValue("id", id);
-                recordThongKe_DoanhSo.setValue("tenHang", tenHang);
-                recordThongKe_DoanhSo.setValue("khachHang", khachHang);
-                recordThongKe_DoanhSo.setValue("soLuong", soLuong);
-                recordThongKe_DoanhSo.setValue("giaXuat", giaXuat);
-                recordThongKe_DoanhSo.setValue("ngayXuat", thoiGianStr);
-                /* Insert to record */
-                modelTableTabThongKe_DoanhSo->insertRecord(-1, recordThongKe_DoanhSo);
-            }while(query.next());
-        }
+//                recordThongKe_DoanhSo.setValue("id", id);
+//                recordThongKe_DoanhSo.setValue("tenHang", tenHang);
+//                recordThongKe_DoanhSo.setValue("khachHang", khachHang);
+//                recordThongKe_DoanhSo.setValue("soLuong", soLuong);
+//                recordThongKe_DoanhSo.setValue("giaXuat", giaXuat);
+//                recordThongKe_DoanhSo.setValue("ngayXuat", thoiGianStr);
+//                /* Insert to record */
+//                modelTableTabThongKe_DoanhSo->insertRecord(-1, recordThongKe_DoanhSo);
+//            }while(query.next());
+//        }
 
-        /* show again the instruction to */
-        ui->tabThongKe_DoanhSo_lbl_DenNgay->show();
-        ui->tabThongKe_DoanhSo_lbl_TuNgay->show();
-        ui->tabThongKe_DoanhSo_btn_DenNgay->show();
-        ui->tabThongKe_DoanhSo_btn_TuNgay->show();
+//        /* show again the instruction to */
+//        ui->tabThongKe_DoanhSo_lbl_DenNgay->show();
+//        ui->tabThongKe_DoanhSo_lbl_TuNgay->show();
+//        ui->tabThongKe_DoanhSo_btn_DenNgay->show();
+//        ui->tabThongKe_DoanhSo_btn_TuNgay->show();
 
-        ui->tabThongKe_DoanhSo_LEdit_DenNgay->hide();
-        ui->tabThongKe_DoanhSo_LEdit_TuNgay->hide();
+//        ui->tabThongKe_DoanhSo_LEdit_DenNgay->hide();
+//        ui->tabThongKe_DoanhSo_LEdit_TuNgay->hide();
 
-    break;
-    case THONG_KE_TENHANG:
-        tenHang = ui->tabThongKe_DoanhSo_cbb_tenHang->currentText();
-        tempStr = "select id, tenHang, khachHang, soLuong, giaXuat, thoiGian from xuatHang where tenHang = '" + tenHang + "'";
-        query.prepare( tempStr);
+//    break;
+//    case THONG_KE_TENHANG:
+//        tenHang = ui->tabThongKe_DoanhSo_cbb_tenHang->currentText();
+//        tempStr = "select id, tenHang, khachHang, soLuong, giaXuat, thoiGian from xuatHang where tenHang = '" + tenHang + "'";
+//        query.prepare( tempStr);
 
-        if(!query.exec())
-        {
-            qDebug() << query.lastError();
-            return;
-        }
+//        if(!query.exec())
+//        {
+//            qDebug() << query.lastError();
+//            return;
+//        }
 
-        if (query.first())
-        {
-            do
-            {
-                id = query.value(0).toInt();
-                tenHang = query.value(1).toString();
-                khachHang = query.value(2).toString();
-                soLuong  = query.value(3).toInt();
-                giaXuat  = query.value(4).toInt();
-                thoiGian = query.value(5).toInt();
-                thoiGianStr = QDateTime::fromSecsSinceEpoch(thoiGian).toString("hh:mm:ss \n dd/MM/yyyy");
+//        if (query.first())
+//        {
+//            do
+//            {
+//                id = query.value(0).toInt();
+//                tenHang = query.value(1).toString();
+//                khachHang = query.value(2).toString();
+//                soLuong  = query.value(3).toInt();
+//                giaXuat  = query.value(4).toInt();
+//                thoiGian = query.value(5).toInt();
+//                thoiGianStr = QDateTime::fromSecsSinceEpoch(thoiGian).toString("hh:mm:ss \n dd/MM/yyyy");
 
-                recordThongKe_DoanhSo.setValue("id", id);
-                recordThongKe_DoanhSo.setValue("tenHang", tenHang);
-                recordThongKe_DoanhSo.setValue("khachHang", khachHang);
-                recordThongKe_DoanhSo.setValue("soLuong", soLuong);
-                recordThongKe_DoanhSo.setValue("giaXuat", giaXuat);
-                recordThongKe_DoanhSo.setValue("ngayXuat", thoiGianStr);
-                /* Insert to record */
-                modelTableTabThongKe_DoanhSo->insertRecord(-1, recordThongKe_DoanhSo);
-            }while(query.next());
-        }
-        break;
-    }
-
-
+//                recordThongKe_DoanhSo.setValue("id", id);
+//                recordThongKe_DoanhSo.setValue("tenHang", tenHang);
+//                recordThongKe_DoanhSo.setValue("khachHang", khachHang);
+//                recordThongKe_DoanhSo.setValue("soLuong", soLuong);
+//                recordThongKe_DoanhSo.setValue("giaXuat", giaXuat);
+//                recordThongKe_DoanhSo.setValue("ngayXuat", thoiGianStr);
+//                /* Insert to record */
+//                modelTableTabThongKe_DoanhSo->insertRecord(-1, recordThongKe_DoanhSo);
+//            }while(query.next());
+//        }
+//        break;
+//    }
 
 
-   // tenHangSearch = ui->tabThongKe_cb_tenHang->currentText();
 
 
-    /* search tenHang trong kho */
-    query.prepare( "select count(*) from huHong" );
-    if(!query.exec())
-    {
-        qDebug() << "can not select khoHang table"<<query.lastError();
-        return;
-    }
-    QString tempStr = "select id, tenHang, soLuong, giaTien, thoiGian from huHong";
-    query.prepare( tempStr);
+//   // tenHangSearch = ui->tabThongKe_cb_tenHang->currentText();
 
-    if(!query.exec())
-    {
-        qDebug() << "can not select in huHong table"<<query.lastError();
-        return;
-    }
-    if (query.first())
-    {
-        do
-        {
-            /* Read data from database*/
-            id = query.value(0).toInt();
-            tenHang = query.value(1).toString();
-            soLuong = query.value(2).toInt();
-            giaNhap = query.value(3).toInt();
-            ngayNhap = query.value(4).toInt();
-            QString ngayNhapStr = QDateTime::fromSecsSinceEpoch(ngayNhap).toString("hh:mm:ss dd/MM/yyyy");
 
-            /* Update the data to the model for showing */
-            recordThongKe_HuHong.setValue("id", id);
-            recordThongKe_HuHong.setValue("tenHang", tenHang);
-            recordThongKe_HuHong.setValue("soLuong", soLuong);
-            recordThongKe_HuHong.setValue("giaTien", giaNhap);
-            recordThongKe_HuHong.setValue("thoiGian", ngayNhapStr);
+//    /* search tenHang trong kho */
+//    query.prepare( "select count(*) from huHong" );
+//    if(!query.exec())
+//    {
+//        qDebug() << "can not select khoHang table"<<query.lastError();
+//        return;
+//    }
+//    QString tempStr = "select id, tenHang, soLuong, giaTien, thoiGian from huHong";
+//    query.prepare( tempStr);
 
-            /* Insert to record */
-            modelTableTabThongKe_HuHong->insertRecord(-1, recordThongKe_HuHong);
-        }while(query.next());
-    }
+//    if(!query.exec())
+//    {
+//        qDebug() << "can not select in huHong table"<<query.lastError();
+//        return;
+//    }
+//    if (query.first())
+//    {
+//        do
+//        {
+//            /* Read data from database*/
+//            id = query.value(0).toInt();
+//            tenHang = query.value(1).toString();
+//            soLuong = query.value(2).toInt();
+//            giaNhap = query.value(3).toInt();
+//            ngayNhap = query.value(4).toInt();
+//            QString ngayNhapStr = QDateTime::fromSecsSinceEpoch(ngayNhap).toString("hh:mm:ss dd/MM/yyyy");
+
+//            /* Update the data to the model for showing */
+//            recordThongKe_HuHong.setValue("id", id);
+//            recordThongKe_HuHong.setValue("tenHang", tenHang);
+//            recordThongKe_HuHong.setValue("soLuong", soLuong);
+//            recordThongKe_HuHong.setValue("giaTien", giaNhap);
+//            recordThongKe_HuHong.setValue("thoiGian", ngayNhapStr);
+
+//            /* Insert to record */
+//            modelTableTabThongKe_HuHong->insertRecord(-1, recordThongKe_HuHong);
+//        }while(query.next());
+//    }
 }
 
-void MainWindow::on_radioButton_KhoangThoiGian_2_clicked()
-{
-    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
-    for(int idx = 0; idx < tmp_count; idx++)
-    {
-        modelTableTabThongKe_HuHong->removeRow(0);
-    }
+//void MainWindow::on_radioButton_KhoangThoiGian_2_clicked()
+//{
+//    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
+//    for(int idx = 0; idx < tmp_count; idx++)
+//    {
+//        modelTableTabThongKe_HuHong->removeRow(0);
+//    }
 
-    /* Hide all thing related to tim theo TenHang*/
-    ui->tabThongKe_DoanhSo_cbb_tenHang->hide();
-    ui->tabThongKe_DoanhSo_lbl_TenHang->hide();
+//    /* Hide all thing related to tim theo TenHang*/
+//    ui->tabThongKe_DoanhSo_cbb_tenHang->hide();
+//    ui->tabThongKe_DoanhSo_lbl_TenHang->hide();
 
-    /* show related things */
-    ui->tabThongKe_DoanhSo_lbl_DenNgay->show();
-    ui->tabThongKe_DoanhSo_lbl_TuNgay->show();
-    ui->tabThongKe_DoanhSo_btn_DenNgay->show();
-    ui->tabThongKe_DoanhSo_btn_TuNgay->show();
+//    /* show related things */
+//    ui->tabThongKe_DoanhSo_lbl_DenNgay->show();
+//    ui->tabThongKe_DoanhSo_lbl_TuNgay->show();
+//    ui->tabThongKe_DoanhSo_btn_DenNgay->show();
+//    ui->tabThongKe_DoanhSo_btn_TuNgay->show();
 
-    thongKeType = THONG_KE_KHOANG_THOIGIAN;
-}
+//    thongKeType = THONG_KE_KHOANG_THOIGIAN;
+//}
 
-void MainWindow::on_radioButton_TenHang_2_clicked()
-{
-    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
-    for(int idx = 0; idx < tmp_count; idx++)
-    {
-        modelTableTabThongKe_HuHong->removeRow(0);
-    }
+//void MainWindow::on_radioButton_TenHang_2_clicked()
+//{
+//    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
+//    for(int idx = 0; idx < tmp_count; idx++)
+//    {
+//        modelTableTabThongKe_HuHong->removeRow(0);
+//    }
 
-    /* Hide all thing related to tim theo khoangThoiGian*/
-    ui->calendarWidget->hide();
-    ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
-    ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
-    ui->tabThongKe_DoanhSo_lbl_DenNgay->hide();
-    ui->tabThongKe_DoanhSo_lbl_TuNgay->hide();
-    ui->tabThongKe_DoanhSo_LEdit_DenNgay->hide();
-    ui->tabThongKe_DoanhSo_LEdit_TuNgay->hide();
+//    /* Hide all thing related to tim theo khoangThoiGian*/
+//    ui->calendarWidget->hide();
+//    ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
+//    ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
+//    ui->tabThongKe_DoanhSo_lbl_DenNgay->hide();
+//    ui->tabThongKe_DoanhSo_lbl_TuNgay->hide();
+//    ui->tabThongKe_DoanhSo_LEdit_DenNgay->hide();
+//    ui->tabThongKe_DoanhSo_LEdit_TuNgay->hide();
 
-    /* show related things */
-    ui->tabThongKe_DoanhSo_cbb_tenHang->show();
-    ui->tabThongKe_DoanhSo_lbl_TenHang->show();
+//    /* show related things */
+//    ui->tabThongKe_DoanhSo_cbb_tenHang->show();
+//    ui->tabThongKe_DoanhSo_lbl_TenHang->show();
 
-    thongKeType = THONG_KE_TENHANG;
-}
+//    thongKeType = THONG_KE_TENHANG;
+//}
