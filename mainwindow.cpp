@@ -38,8 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
     // Set up for display time in status bar
     QDateTime local(QDateTime::currentDateTime());
     qDebug() << "Local time is:" << local.currentDateTime();
@@ -113,19 +111,6 @@ MainWindow::MainWindow(QWidget *parent) :
     modelTableTabThongKe_HuHong->setEditStrategy(QSqlTableModel::OnManualSubmit);
     modelTableTabThongKe_HuHong->select();
 
-    ui->calendarWidget->hide();
-    dateInteractive = -1;
-
-    ui->tabThongKe_DoanhSo_LEdit_DenNgay->hide();
-    ui->tabThongKe_DoanhSo_LEdit_TuNgay->hide();
-
-    ui->tabThongKe_DoanhSo_cbb_tenHang->hide();
-    ui->tabThongKe_DoanhSo_lbl_TenHang->hide();
-
-    ui->tabThongKe_DoanhSo_lbl_TenKhachHang->hide();
-    ui->tabThongKe_DoanhSo_cbb_tenKhachHang->hide();
-
-    ui->radioButton_KhoangThoiGian->setChecked(1);
 
     recordThongKe_DoanhSo = modelTableTabThongKe_DoanhSo->record();
     recordThongKe_TimHang = modelTableTabThongKe_TimHang->record();
@@ -136,6 +121,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabThongKe_CongNo_btn_LichSuBanHang->hide();
     ui->tabThongKe_CongNo_btn_LichSuThu->hide();
+
+    /* Initial show for tabThongKe_DoanhSo*/
+    tabThongKe_DoanhSo_InitialShow();
+
+    /* Initial show for tabThongKe_HuHong*/
+    tabThongKe_HuHong_InitialShow();
 }
 
 MainWindow::~MainWindow()
@@ -376,6 +367,7 @@ void MainWindow::updateComboBox(int index)
                      ui->tabHuHong_cb_tenHang->addItem(tempString);
                      ui->tabThongKe_cb_tenHang->addItem(tempString);
                      ui->tabThongKe_DoanhSo_cbb_tenHang->addItem(tempString);
+                     ui->tabThongKe_HuHong_cbb_tenHang->addItem(tempString);
                      idx_current++;
                  }while(idx_current <idx_temp);
              }
@@ -1083,35 +1075,20 @@ void MainWindow::on_tabThongKe_tabWidget_currentChanged(int index)
     }
 }
 
-void MainWindow::on_calendarWidget_clicked(const QDate &date)
-{
-    ui->calendarWidget->hide();
-    if(dateInteractive == DATE_INTERACTIVE_FROM)
-    {
-        ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
-        ui->tabThongKe_DoanhSo_LEdit_TuNgay->show();
-        ui->tabThongKe_DoanhSo_LEdit_TuNgay->setText(date.toString("dd/MM/yyyy"));
-    }
-    else if(dateInteractive == DATE_INTERACTIVE_TO)
-    {
-        ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
-        ui->tabThongKe_DoanhSo_LEdit_DenNgay->show();
-        ui->tabThongKe_DoanhSo_LEdit_DenNgay->setText(date.toString("dd/MM/yyyy"));
-    }
-}
+
 
 void MainWindow::on_tabThongKe_DoanhSo_btn_TuNgay_clicked()
 {
-   ui->calendarWidget->show();
+   ui->calendarWidget_DoanhSo->show();
    ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
-   dateInteractive = DATE_INTERACTIVE_FROM;
+   dateInteractive_DoanhSo = DATE_INTERACTIVE_FROM;
 }
 
 void MainWindow::on_tabThongKe_DoanhSo_btn_DenNgay_clicked()
 {
-    ui->calendarWidget->show();
+    ui->calendarWidget_DoanhSo->show();
     ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
-    dateInteractive = DATE_INTERACTIVE_TO;
+    dateInteractive_DoanhSo = DATE_INTERACTIVE_TO;
 }
 
 void MainWindow::on_radioButton_KhoangThoiGian_clicked()
@@ -1136,7 +1113,7 @@ void MainWindow::on_radioButton_KhoangThoiGian_clicked()
     ui->tabThongKe_DoanhSo_btn_DenNgay->show();
     ui->tabThongKe_DoanhSo_btn_TuNgay->show();
 
-    thongKeType = THONG_KE_KHOANG_THOIGIAN;
+    thongKeType_DoanhSo = THONG_KE_KHOANG_THOIGIAN;
 }
 
 void MainWindow::on_radioButton_khachHang_clicked()
@@ -1148,7 +1125,7 @@ void MainWindow::on_radioButton_khachHang_clicked()
     }
 
     /* Hide all thing related to tim theo khoangThoiGian*/
-    ui->calendarWidget->hide();
+    ui->calendarWidget_DoanhSo->hide();
     ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
     ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
     ui->tabThongKe_DoanhSo_lbl_DenNgay->hide();
@@ -1164,7 +1141,7 @@ void MainWindow::on_radioButton_khachHang_clicked()
     ui->tabThongKe_DoanhSo_lbl_TenKhachHang->show();
     ui->tabThongKe_DoanhSo_cbb_tenKhachHang->show();
 
-    thongKeType = THONG_KE_KHACHHANG;
+    thongKeType_DoanhSo = THONG_KE_KHACHHANG;
 }
 
 void MainWindow::on_radioButton_TenHang_clicked()
@@ -1176,7 +1153,7 @@ void MainWindow::on_radioButton_TenHang_clicked()
     }
 
     /* Hide all thing related to tim theo khoangThoiGian*/
-    ui->calendarWidget->hide();
+    ui->calendarWidget_DoanhSo->hide();
     ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
     ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
     ui->tabThongKe_DoanhSo_lbl_DenNgay->hide();
@@ -1192,7 +1169,7 @@ void MainWindow::on_radioButton_TenHang_clicked()
     ui->tabThongKe_DoanhSo_cbb_tenHang->show();
     ui->tabThongKe_DoanhSo_lbl_TenHang->show();
 
-    thongKeType = THONG_KE_TENHANG;
+    thongKeType_DoanhSo = THONG_KE_TENHANG;
 }
 
 void MainWindow::on_tabThongKe_btn_ThongKe_clicked()
@@ -1223,7 +1200,7 @@ void MainWindow::on_tabThongKe_btn_ThongKe_clicked()
         modelTableTabThongKe_DoanhSo->removeRow(0);
     }
 
-    switch (thongKeType)
+    switch (thongKeType_DoanhSo)
     {
     case THONG_KE_KHOANG_THOIGIAN:
         fromDateStr = ui->tabThongKe_DoanhSo_LEdit_TuNgay->text();
@@ -1594,7 +1571,7 @@ void MainWindow::on_tabThongKe_HuHong_clicked()
 //        modelTableTabThongKe_HuHong->removeRow(0);
 //    }
 
-//    switch (thongKeType)
+//    switch (thongKeType_DoanhSo)
 //    {
 //    case THONG_KE_KHOANG_THOIGIAN:
 //        fromDateStr = ui->tabThongKe_DoanhSo_LEdit_TuNgay->text();
@@ -1729,47 +1706,252 @@ void MainWindow::on_tabThongKe_HuHong_clicked()
 //    }
 }
 
-//void MainWindow::on_radioButton_KhoangThoiGian_2_clicked()
-//{
-//    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
-//    for(int idx = 0; idx < tmp_count; idx++)
-//    {
-//        modelTableTabThongKe_HuHong->removeRow(0);
-//    }
 
-//    /* Hide all thing related to tim theo TenHang*/
-//    ui->tabThongKe_DoanhSo_cbb_tenHang->hide();
-//    ui->tabThongKe_DoanhSo_lbl_TenHang->hide();
 
-//    /* show related things */
-//    ui->tabThongKe_DoanhSo_lbl_DenNgay->show();
-//    ui->tabThongKe_DoanhSo_lbl_TuNgay->show();
-//    ui->tabThongKe_DoanhSo_btn_DenNgay->show();
-//    ui->tabThongKe_DoanhSo_btn_TuNgay->show();
+void MainWindow::on_radioButton_TenHang_2_clicked()
+{
+    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
+    for(int idx = 0; idx < tmp_count; idx++)
+    {
+        modelTableTabThongKe_HuHong->removeRow(0);
+    }
 
-//    thongKeType = THONG_KE_KHOANG_THOIGIAN;
-//}
+    /* Hide all thing related to tim theo khoangThoiGian*/
+    ui->calendarWidget_HuHong->hide();
+    ui->tabThongKe_HuHong_btn_DenNgay->hide();
+    ui->tabThongKe_HuHong_btn_TuNgay->hide();
+    ui->tabThongKe_HuHong_lbl_DenNgay->hide();
+    ui->tabThongKe_HuHong_lbl_TuNgay->hide();
+    ui->tabThongKe_HuHong_LEdit_DenNgay->hide();
+    ui->tabThongKe_HuHong_LEdit_TuNgay->hide();
 
-//void MainWindow::on_radioButton_TenHang_2_clicked()
-//{
-//    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
-//    for(int idx = 0; idx < tmp_count; idx++)
-//    {
-//        modelTableTabThongKe_HuHong->removeRow(0);
-//    }
+    /* show related things */
+    ui->tabThongKe_HuHong_cbb_tenHang->show();
+    ui->tabThongKe_HuHong_lbl_TenHang->show();
 
-//    /* Hide all thing related to tim theo khoangThoiGian*/
-//    ui->calendarWidget->hide();
-//    ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
-//    ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
-//    ui->tabThongKe_DoanhSo_lbl_DenNgay->hide();
-//    ui->tabThongKe_DoanhSo_lbl_TuNgay->hide();
-//    ui->tabThongKe_DoanhSo_LEdit_DenNgay->hide();
-//    ui->tabThongKe_DoanhSo_LEdit_TuNgay->hide();
+    thongKeType_HuHong = THONG_KE_TENHANG;
+}
 
-//    /* show related things */
-//    ui->tabThongKe_DoanhSo_cbb_tenHang->show();
-//    ui->tabThongKe_DoanhSo_lbl_TenHang->show();
+void MainWindow::on_radioButton_KhoangThoiGian_2_clicked()
+{
+    int tmp_count = modelTableTabThongKe_HuHong->rowCount();
+    for(int idx = 0; idx < tmp_count; idx++)
+    {
+        modelTableTabThongKe_HuHong->removeRow(0);
+    }
 
-//    thongKeType = THONG_KE_TENHANG;
-//}
+    /* Hide all thing related to tim theo TenHang*/
+    ui->tabThongKe_HuHong_cbb_tenHang->hide();
+    ui->tabThongKe_HuHong_lbl_TenHang->hide();
+
+    /* show related things */
+    ui->tabThongKe_HuHong_lbl_DenNgay->show();
+    ui->tabThongKe_HuHong_lbl_TuNgay->show();
+    ui->tabThongKe_HuHong_btn_DenNgay->show();
+    ui->tabThongKe_HuHong_btn_TuNgay->show();
+
+    thongKeType_HuHong = THONG_KE_KHOANG_THOIGIAN;
+}
+void MainWindow:: tabThongKe_HuHong_InitialShow()
+{
+    /* Hide calendar component */
+    ui->calendarWidget_HuHong->hide();
+    dateInteractive_HuHong = -1;
+
+    /* Hide Ten Hang search*/
+    ui->tabThongKe_HuHong_lbl_TenHang->hide();
+    ui->tabThongKe_HuHong_cbb_tenHang->hide();
+
+    /* Hide Data results*/
+    ui->tabThongKe_HuHong_LEdit_DenNgay->hide();
+    ui->tabThongKe_HuHong_LEdit_TuNgay->hide();
+
+    /* Set search through "Khoang thoi gian" as default */
+     ui->radioButton_KhoangThoiGian_2->setChecked(1);
+}
+
+void MainWindow:: tabThongKe_DoanhSo_InitialShow()
+{
+    /* Hide calendar component */
+    ui->calendarWidget_DoanhSo->hide();
+    dateInteractive_DoanhSo = -1;
+
+     /* Hide Data results*/
+    ui->tabThongKe_DoanhSo_LEdit_DenNgay->hide();
+    ui->tabThongKe_DoanhSo_LEdit_TuNgay->hide();
+
+     /* Hide Ten Hang search*/
+    ui->tabThongKe_DoanhSo_cbb_tenHang->hide();
+    ui->tabThongKe_DoanhSo_lbl_TenHang->hide();
+
+     /* Hide Ten Khach Hang search*/
+    ui->tabThongKe_DoanhSo_lbl_TenKhachHang->hide();
+    ui->tabThongKe_DoanhSo_cbb_tenKhachHang->hide();
+
+    /* Set search through "Khoang thoi gian" as default */
+    ui->radioButton_KhoangThoiGian->setChecked(1);
+
+}
+
+void MainWindow::on_tabThongKe_HuHong_btn_TuNgay_clicked()
+{
+    ui->calendarWidget_HuHong->show();
+    ui->tabThongKe_HuHong_btn_TuNgay->hide();
+    dateInteractive_HuHong = DATE_INTERACTIVE_FROM;
+}
+
+void MainWindow::on_tabThongKe_HuHong_btn_DenNgay_clicked()
+{
+    ui->calendarWidget_HuHong->show();
+    ui->tabThongKe_HuHong_btn_DenNgay->hide();
+    dateInteractive_HuHong = DATE_INTERACTIVE_TO;
+}
+
+
+
+
+void MainWindow::on_calendarWidget_DoanhSo_clicked(const QDate &date)
+{
+    ui->calendarWidget_DoanhSo->hide();
+    if(dateInteractive_DoanhSo == DATE_INTERACTIVE_FROM)
+    {
+        ui->tabThongKe_DoanhSo_btn_TuNgay->hide();
+        ui->tabThongKe_DoanhSo_LEdit_TuNgay->show();
+        ui->tabThongKe_DoanhSo_LEdit_TuNgay->setText(date.toString("dd/MM/yyyy"));
+    }
+    else if(dateInteractive_DoanhSo == DATE_INTERACTIVE_TO)
+    {
+        ui->tabThongKe_DoanhSo_btn_DenNgay->hide();
+        ui->tabThongKe_DoanhSo_LEdit_DenNgay->show();
+        ui->tabThongKe_DoanhSo_LEdit_DenNgay->setText(date.toString("dd/MM/yyyy"));
+    }
+}
+void MainWindow::on_calendarWidget_HuHong_clicked(const QDate &date)
+{
+    ui->calendarWidget_HuHong->hide();
+    if(dateInteractive_HuHong == DATE_INTERACTIVE_FROM)
+    {
+        ui->tabThongKe_HuHong_btn_TuNgay->hide();
+        ui->tabThongKe_HuHong_LEdit_TuNgay->show();
+        ui->tabThongKe_HuHong_LEdit_TuNgay->setText(date.toString("dd/MM/yyyy"));
+    }
+    else if(dateInteractive_HuHong == DATE_INTERACTIVE_TO)
+    {
+        ui->tabThongKe_HuHong_btn_DenNgay->hide();
+        ui->tabThongKe_HuHong_LEdit_DenNgay->show();
+        ui->tabThongKe_HuHong_LEdit_DenNgay->setText(date.toString("dd/MM/yyyy"));
+    }
+}
+
+void MainWindow::on_tabThongKe_btn_ThongKe_2_clicked()
+{
+    QString fromDateStr;
+    QString toDateStr;
+    QDateTime fromDate;
+    QDateTime toDate;
+    QSqlQuery query;
+    qint64 fromDateInt;
+    qint64 toDateInt;
+    int id;
+    QString tenHang;
+    int soLuong;
+    int giaXuat;
+    int giaNhap;
+    int thoiGian;
+    QString thoiGianStr;
+    QString tempStr;
+    int ngayNhap;
+
+    /* Try to remove all current values of model */
+    int tmpCount = modelTableTabThongKe_HuHong->rowCount();
+    for(int idx =0 ; idx < tmpCount; idx++)
+    {
+        modelTableTabThongKe_HuHong->removeRow(0);
+    }
+
+    switch (thongKeType_HuHong)
+    {
+    case THONG_KE_KHOANG_THOIGIAN:
+        fromDateStr = ui->tabThongKe_HuHong_LEdit_TuNgay->text();
+        toDateStr   = ui->tabThongKe_HuHong_LEdit_DenNgay->text();
+
+        fromDate = QDateTime::fromString(fromDateStr + "00:00:00", "dd/MM/yyyyhh:mm:ss");
+        toDate   = QDateTime::fromString(toDateStr +"23:59:59", "dd/MM/yyyyhh:mm:ss");
+
+        fromDateInt = fromDate.toSecsSinceEpoch();
+        toDateInt   = toDate.toSecsSinceEpoch();
+
+        tempStr = "select id, tenHang, soLuong, giaTien, thoiGian from huHong where thoiGian >= '" + QString::number(fromDateInt) +"' and thoiGian <= '" + QString::number(toDateInt) + "'";
+        query.prepare( tempStr);
+
+        if(!query.exec())
+        {
+            qDebug() << query.lastError();
+            return;
+        }
+
+        if (query.first())
+        {
+            do
+            {
+                id = query.value(0).toInt();
+                tenHang = query.value(1).toString();
+                soLuong  = query.value(2).toInt();
+                giaXuat  = query.value(3).toInt();
+                thoiGian = query.value(4).toInt();
+                thoiGianStr = QDateTime::fromSecsSinceEpoch(thoiGian).toString("hh:mm:ss \n dd/MM/yyyy");
+
+                recordThongKe_HuHong.setValue("id", id);
+                recordThongKe_HuHong.setValue("tenHang", tenHang);
+                recordThongKe_HuHong.setValue("soLuong", soLuong);
+                recordThongKe_HuHong.setValue("giaTien", giaXuat);
+                recordThongKe_HuHong.setValue("thoiGian", thoiGianStr);
+                /* Insert to record */
+                modelTableTabThongKe_HuHong->insertRecord(-1, recordThongKe_HuHong);
+            }while(query.next());
+        }
+
+        /* show again the instruction to */
+        ui->tabThongKe_HuHong_lbl_DenNgay->show();
+        ui->tabThongKe_HuHong_lbl_TuNgay->show();
+        ui->tabThongKe_HuHong_btn_DenNgay->show();
+        ui->tabThongKe_HuHong_btn_TuNgay->show();
+
+        ui->tabThongKe_HuHong_LEdit_DenNgay->hide();
+        ui->tabThongKe_HuHong_LEdit_TuNgay->hide();
+
+    break;
+    case THONG_KE_TENHANG:
+        tenHang = ui->tabThongKe_HuHong_cbb_tenHang->currentText();
+        tempStr = "select id, tenHang, soLuong, giaTien, thoiGian from huHong where tenHang = '" + tenHang + "'";
+        query.prepare( tempStr);
+
+        if(!query.exec())
+        {
+            qDebug() << query.lastError();
+            return;
+        }
+
+        if (query.first())
+        {
+            do
+            {
+                id = query.value(0).toInt();
+                tenHang = query.value(1).toString();
+                soLuong  = query.value(2).toInt();
+                giaXuat  = query.value(3).toInt();
+                thoiGian = query.value(4).toInt();
+                thoiGianStr = QDateTime::fromSecsSinceEpoch(thoiGian).toString("hh:mm:ss \n dd/MM/yyyy");
+
+                recordThongKe_HuHong.setValue("id", id);
+                recordThongKe_HuHong.setValue("tenHang", tenHang);
+                recordThongKe_HuHong.setValue("soLuong", soLuong);
+                recordThongKe_HuHong.setValue("giaTien", giaXuat);
+                recordThongKe_HuHong.setValue("thoiGian", thoiGianStr);
+                /* Insert to record */
+                modelTableTabThongKe_HuHong->insertRecord(-1, recordThongKe_HuHong);
+            }while(query.next());
+        }
+        break;
+    }
+}

@@ -32,8 +32,10 @@ public:
     QSqlRecord recordThongKe_HuHong;
     int currentRow_tabXuatHang_tableView;
     QString currentKhachHang;
-    int dateInteractive;
-    int thongKeType;
+    int dateInteractive_DoanhSo;
+    int dateInteractive_HuHong;
+    int thongKeType_DoanhSo;
+    int thongKeType_HuHong;
 
 private slots:
 
@@ -64,9 +66,6 @@ private slots:
 
     void on_tabThongKe_tabWidget_currentChanged(int index);
 
-
-    void on_calendarWidget_clicked(const QDate &date);
-
     void on_tabThongKe_DoanhSo_btn_TuNgay_clicked();
 
     void on_tabThongKe_DoanhSo_btn_DenNgay_clicked();
@@ -87,6 +86,24 @@ private slots:
     void on_tabThongKe_CongNo_btn_LichSuBanHang_clicked();
 
     void on_tabThongKe_HuHong_clicked();
+
+    void on_radioButton_KhoangThoiGian_2_clicked();
+
+    void on_radioButton_TenHang_2_clicked();
+
+    void tabThongKe_HuHong_InitialShow();
+    void tabThongKe_DoanhSo_InitialShow();
+
+    void on_tabThongKe_HuHong_btn_TuNgay_clicked();
+
+    void on_tabThongKe_HuHong_btn_DenNgay_clicked();
+
+
+    void on_calendarWidget_DoanhSo_clicked(const QDate &date);
+
+    void on_calendarWidget_HuHong_clicked(const QDate &date);
+
+    void on_tabThongKe_btn_ThongKe_2_clicked();
 
 private:
     Ui::MainWindow *ui;
