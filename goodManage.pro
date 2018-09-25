@@ -25,16 +25,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    thongkeclass.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    thongkeclass.h
+        mainwindow.h
 
 FORMS += \
         mainwindow.ui \
-    thongkeclass.ui
+
 
 RESOURCES += \
     resource.qrc
