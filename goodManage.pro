@@ -32,6 +32,7 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
+    mainwindow.ui
 
 
 RESOURCES += \
